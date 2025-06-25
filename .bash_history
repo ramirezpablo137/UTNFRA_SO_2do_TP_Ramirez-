@@ -5,11 +5,10 @@ cd UTN-FRA_SO_Examenes
 ls -la
 cd 202406
 ls -la
-./script_Precondicion.sh 
+./script_Precondicion.sh
 source  ~/.bashrc  && history -a
 cd
 pwd
-mkdir ~/RTA_Examen_20250625
 ls -la
 lsblk
 sudo fdisk -l
@@ -38,23 +37,18 @@ sudo fdisk -l
 lsblk
 sudo pvcreate /dev/sdd1 /dev/sdd2 /dev/sdc1
 sudo pvs
-sudo vgcreate vg_datos dev/sdd1 /dev/sdd2
-pablo@VMDiscos:~$ sudo vgcreate vg_datos /dev/sdd1 /dev/sdd2
-sudo vgcreate vg_datos dev/sdd1 /dev/sdd2
 sudo vgcreate vg_datos /dev/sdd1 /dev/sdd2
 sudo vgcreate vg_temp /dev/sdc1
 sudo vgs
 sudo lvcreate -L +5M vg_datos -n lv_docker
 sudo lvcreate -l +100%FREE vg_datos -n lv_workareas
 sudo lvcreate -L +512M vg_temp -n lv_swap
-sudo lvcreate -l 100%FREE lv_swap -n vg_temp
 sudo lvcreate -l +100%FREE vg_temp -n lv_swap
 sudo lvs
 sudo pvs
 lsblk
 sudo mkfs.ext4 /dev/mapper/vg_datos-lv_docker
 sudo mkfs.ext4 /dev/mapper/vg_datos-lv_workareas
-sudo mkswap  /dev/mapper/vg_temp-lv_swap sudo swapon  /dev/mapper/vg_temp-lv_swap
 sudo mkswap  /dev/mapper/vg_temp-lv_swap
 sudo swapon  /dev/mapper/vg_temp-lv_swap
 free -h
@@ -143,16 +137,13 @@ vim Punto_B.sh
 cd
 clear
 cd ~/UTN-FRA_SO_Examenes/202406/docker/
+sudo usermod -aG docker pablo
 ls -la
-vim index.html 
+vim index.html
 vim dockerfile
 ls -la
 docker login -u 24pabloo
-vim index.html 
-docker build -t 24pabloo/web1-ramirez:latest .
-sudo usermod -aG docker pablo
-docker build -t 24pabloo/web1-ramirez:latest .
-exit
+vim index.html
 docker build -t 24pabloo/web1-ramirez:latest .
 cd ~/UTN-FRA_SO_Examenes/202406/docker/
 docker build -t 24pabloo/web1-ramirez:latest .
@@ -163,75 +154,26 @@ ls -la
 vim run.sh
 chmod +x run.sh
 sudo docker compose up -d
-sudo docker push 24pabloo/web1-ramirez:latest
 docker login -u 24pabloo
-sudo docker push 24pabloo/web1-ramirez:latest
 sudo docker images
 sudo docker push 24pabloo/web1-ramirez:latest
-docker login -u 24pabloo
-sudo docker push 24pabloo/web1-ramirez:latest
-sudo docker images
-docker login -u 24pabloo
-sudo docker push 24pabloo/web1-ramirez:latest
-sudo docker tag 24pabloo/web1-ramirez:latest 24pabloo/web-ramirez2:latest
-sudo docker push 24pabloo/web-ramirez2:latest
-sudo docker logout
-sudo docker login -u 24pabloo
-sudo docker push 24pabloo/web-ramirez2:latest
-docker pull 24pabloo/web-ramirez2:latest
-docker run -d -p -p 8080:80 24pabloo/web-ramirez2:latest
-docker run -d -p 8080:80 24pabloo/web-ramirez2:latest
-docker ps
-docker stop b6923b3a6d8f
-docker run -d -p 8080:80 24pabloo/web-ramirez2:latest
 ls -la
 vim dockerfile
 vim index.html
-vim docker-compose.yml 
+vim docker-compose.yml
 docker ps
-vim docker-compose.yml 
-docker run --rm -p 8080:80 24pabloo/web-ramirez2:latest
-docker logs web-ramirez2-container
-docker ps -a
-docker stop b6923b3a6d8f 
-docker stop 9e477940bb71 
-docker stop dd7ab91fb7f2 
+vim docker-compose.yml
 docker ps -a
 ls -la
 vim index.html
-vim dockerfile
-docker ps -aq | xargs -r docker stop
-docker ps -aq | xargs -r docker rm
-docker images -aq | xargs -r docker rmi -f
-docker volume prune -f
-docker network prune -f
-docker ps -a        # No debe mostrar nada
-docker images       # No debe mostrar nada
+vim dockerfile  
 ls -la
-docker login -u 24pabloo
-docker build -t 24pabloo/web1-ramirez:latest
-docker build -t 24pabloo/web1-ramirez:latest .
-docker push 24pabloo/web1-ramirez:latest
-docker run --rm -p 8080:80 --name web1-ramirez-container 24pabloo/web1-ramirez:latest
-docker run -d -p 8080:80 --name web1-ramirez-container 24pabloo/web1-ramirez:latest
-docker ps
-cd ~/UTN-FRA_SO_Examenes/202406/docker/
-docker ps
-docker run -d -p 8080:80 --name web1-ramirez-container 24pabloo/web1-ramirez:latest
-docker ps
-docker rm web1-ramirez-container
-docker run -d -p 8080:80 --name web1-ramirez-container 24pabloo/web1-ramirez:latest
 docker ps -a
 curl -i http://localhost:8080
-docker logs web1-ramirez-container
-cat Dockerfile
-cat index.html
 vim Dockerfile
 vim dockerfile
 vim docker-compose.yml
 docker run -d -p 8080:80 --name web1-ramirez-container 24pabloo/web1-ramirez:latest
-docker rm web1-ramirez-container
-docker ps -a
 curl -i http://localhost:8080
 clear
 vim run.sh
