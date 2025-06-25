@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - include_role:
+        name: 2do_parcial
+    
+    - name: "Segundo Parcial - Configuración Ansible"
+      debug:
+        msg: "Despues de la ejecucion del rol"
+  

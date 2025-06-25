@@ -1,0 +1,35 @@
+---
+- name: Crear directorio alumno
+  file:
+    path: /tmp/2do_parcial/alumno
+    state: directory
+    mode: '0755'
+    recurse: yes
+
+- name: Crear directorio equipo
+  file:
+    path: /tmp/2do_parcial/equipo
+    state: directory
+    mode: '0755'
+    recurse: yes
+
+- name: Generar datos_alumno.txt con template
+  template:
+    src: datos_alumno.txt.j2
+    dest: /tmp/2do_parcial/alumno/datos_alumno.txt
+    mode: '0644'
+
+- name: Generar datos_equipo.txt con template
+  template:
+    src: datos_equipo.txt.j2
+    dest: /tmp/2do_parcial/equipo/datos_equipo.txt
+    mode: '0644'
+
+- name: Configurar sudoers para grupo 2PSupervisores
+  copy:
+    dest: /etc/sudoers.d/2psupervisores
+    content: "%2PSupervisores ALL=(ALL) NOPASSWD: ALL\n"
+    owner: root
+    group: root
+    mode: '0440'
+    validate: 'visudo -cf %s'

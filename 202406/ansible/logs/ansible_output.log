@@ -1,0 +1,48 @@
+2024-06-24 18:08:06,499 p=3444395 u=upszot n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2024-06-24 18:08:06,598 p=3444395 u=upszot n=ansible | PLAY [all] **********************************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:06,609 p=3444395 u=upszot n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,746 p=3444395 u=upszot n=ansible | ok: [localhost]
+2024-06-24 18:08:07,775 p=3444395 u=upszot n=ansible | TASK [include_role : 2do_parcial] ***********************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,805 p=3444395 u=upszot n=ansible | TASK [2do_parcial : debug] ******************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,817 p=3444395 u=upszot n=ansible | ok: [localhost] => {
+    "msg": "Tareas del 2do Parcial"
+}
+2024-06-24 18:08:07,836 p=3444395 u=upszot n=ansible | TASK [Otra tarea] ***************************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,851 p=3444395 u=upszot n=ansible | ok: [localhost] => {
+    "msg": "Despues de la ejecucion del rol"
+}
+2024-06-24 18:08:07,885 p=3444395 u=upszot n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,885 p=3444395 u=upszot n=ansible | localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-06-25 07:21:59,515 p=18607 u=pablo n=ansible | PLAY [all] *************************************************************************
+2025-06-25 07:21:59,531 p=18607 u=pablo n=ansible | TASK [Gathering Facts] *************************************************************
+2025-06-25 07:21:59,921 p=18607 u=pablo n=ansible | fatal: [localhost]: FAILED! => {"ansible_facts": {}, "changed": false, "failed_modules": {"ansible.legacy.setup": {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python3.10"}, "failed": true, "module_stderr": "sudo: a password is required\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1, "warnings": ["Platform linux on host localhost is using the discovered Python interpreter at /usr/bin/python3.10, but future installation of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more information."]}}, "msg": "The following modules failed to execute: ansible.legacy.setup\n"}
+2025-06-25 07:21:59,923 p=18607 u=pablo n=ansible | PLAY RECAP *************************************************************************
+2025-06-25 07:21:59,923 p=18607 u=pablo n=ansible | localhost                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2025-06-25 07:22:51,754 p=18646 u=pablo n=ansible | PLAY [all] *************************************************************************
+2025-06-25 07:22:51,761 p=18646 u=pablo n=ansible | TASK [Gathering Facts] *************************************************************
+2025-06-25 07:22:53,288 p=18646 u=pablo n=ansible | [WARNING]: Platform linux on host localhost is using the discovered Python
+interpreter at /usr/bin/python3.10, but future installation of another Python
+interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+
+2025-06-25 07:22:53,289 p=18646 u=pablo n=ansible | ok: [localhost]
+2025-06-25 07:22:53,297 p=18646 u=pablo n=ansible | TASK [include_role : 2do_parcial] **************************************************
+2025-06-25 07:22:53,326 p=18646 u=pablo n=ansible | included: 2do_parcial for localhost
+2025-06-25 07:22:53,331 p=18646 u=pablo n=ansible | TASK [2do_parcial : Crear directorio alumno] ***************************************
+2025-06-25 07:22:53,632 p=18646 u=pablo n=ansible | changed: [localhost]
+2025-06-25 07:22:53,639 p=18646 u=pablo n=ansible | TASK [2do_parcial : Crear directorio equipo] ***************************************
+2025-06-25 07:22:53,841 p=18646 u=pablo n=ansible | changed: [localhost]
+2025-06-25 07:22:53,849 p=18646 u=pablo n=ansible | TASK [2do_parcial : Generar datos_alumno.txt con template] *************************
+2025-06-25 07:22:54,384 p=18646 u=pablo n=ansible | changed: [localhost]
+2025-06-25 07:22:54,400 p=18646 u=pablo n=ansible | TASK [2do_parcial : Generar datos_equipo.txt con template] *************************
+2025-06-25 07:22:54,763 p=18646 u=pablo n=ansible | changed: [localhost]
+2025-06-25 07:22:54,770 p=18646 u=pablo n=ansible | TASK [2do_parcial : Configurar sudoers para grupo 2PSupervisores] ******************
+2025-06-25 07:22:55,132 p=18646 u=pablo n=ansible | changed: [localhost]
+2025-06-25 07:22:55,142 p=18646 u=pablo n=ansible | TASK [Segundo Parcial - Configuración Ansible] *************************************
+2025-06-25 07:22:55,158 p=18646 u=pablo n=ansible | ok: [localhost] => {
+    "msg": "Despues de la ejecucion del rol"
+}
+2025-06-25 07:22:55,161 p=18646 u=pablo n=ansible | PLAY RECAP *************************************************************************
+2025-06-25 07:22:55,161 p=18646 u=pablo n=ansible | localhost                  : ok=8    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
